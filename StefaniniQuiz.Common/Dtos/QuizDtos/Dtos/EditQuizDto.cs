@@ -19,6 +19,6 @@ namespace StefaniniQuiz.Common.Dtos.QuizDtos.Dtos
 
         public IEnumerable<EditQuestionsDto> Questions { get; set; } = Enumerable.Empty<EditQuestionsDto>();
 
-        public DateTime CreateDate { get; set; }
+        public DateTime? CreateDate { get; set; }
     }
 }

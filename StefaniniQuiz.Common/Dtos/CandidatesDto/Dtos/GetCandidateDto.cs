@@ -1,14 +1,13 @@
-﻿using StefaniniQuiz.Domain.EntityInterface;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace StefaniniQuiz.Domain.Entity
+namespace StefaniniQuiz.Common.Dtos.CandidatesDto.Dtos
 {
-    public class Candidate : IEntity
+    public class GetCandidateDto
     {
-        [Key]
         public Guid Id { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
@@ -18,6 +17,5 @@ namespace StefaniniQuiz.Domain.Entity
         public DateTime? UpdatedDate { get; set; }
         public string? CreatedBy { get; set; }
         public string? UpdatedBy { get; set; }
-
     }
 }

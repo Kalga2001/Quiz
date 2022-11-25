@@ -17,6 +17,6 @@ namespace StefaniniQuiz.Common.Dtos.QuizDtos.Dtos
 
         public IEnumerable<CreateQuestionDto> Questions { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
     }
 }

@@ -14,7 +14,10 @@ namespace StefaniniQuiz.Domain.Entity
         public string TechnologyName { get; set; }
         public ICollection<Questions> Questions { get; set; } 
         public ICollection<QuizResults>? QuizResults { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
+        public string? CreatedBy { get; set; }
+        public string? UpdatedBy { get; set; }
 
 
     }

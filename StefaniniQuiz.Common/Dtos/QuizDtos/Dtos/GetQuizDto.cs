@@ -16,7 +16,7 @@ namespace StefaniniQuiz.Common.Dtos.QuizDtos.Dtos
         public string TechnologyName { get; set; }
 
         public IEnumerable<GetQuestionDto> Questions { get; set; } = Enumerable.Empty<GetQuestionDto>();
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
 
     }

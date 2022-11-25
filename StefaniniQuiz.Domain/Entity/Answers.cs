@@ -18,6 +18,9 @@ namespace StefaniniQuiz.Domain.Entity
         public Guid QuestionId { get; set; }
         [JsonIgnore]
         public Questions? Question { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
+        public string? CreatedBy { get; set; }
+        public string? UpdatedBy { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace StefaniniQuiz.Common.Dtos.QuestionsDto
         public int TotalPoints { get; set; }
 
         public IEnumerable<GetAnswerDto> Answers { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
     }
 }

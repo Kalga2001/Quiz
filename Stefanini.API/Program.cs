@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using StefaniniQuiz.BLL.Services.CandidateServices;
 using StefaniniQuiz.BLL.Services.QuizServices;
 using StefaniniQuiz.DAL;
 using StefaniniQuiz.DAL.Interfaces;
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<QuizDbContext>(optionBuilder =>
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IQuizService, QuizServices>();
+builder.Services.AddScoped<ICandidateService, CandidateService>();
 
 builder.Services.AddControllers();
 

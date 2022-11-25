@@ -13,7 +13,7 @@ namespace StefaniniQuiz.Common.Dtos.AnswersDto
         public int Point { get; set; }
 
         public bool IsCorrect { get;set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
     }
 }
