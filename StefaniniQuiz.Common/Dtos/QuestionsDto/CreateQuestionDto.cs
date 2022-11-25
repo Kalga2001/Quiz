@@ -13,7 +13,7 @@ namespace StefaniniQuiz.Common.Dtos.QuestionsDto
 
         public int TotalPoints => Answers.Any() ? Answers.Select(x => x.Point).Sum() : 0;
 
-        public IEnumerable<CreateAnswerDto> Answers { get; set; }
+        public IEnumerable<CreateAnswerDto> Answers { get; set; } 
 
     }
 }

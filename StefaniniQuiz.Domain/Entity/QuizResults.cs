@@ -16,16 +16,7 @@ namespace StefaniniQuiz.Domain.Entity
         public Quiz? Quiz { get; set; }
         [JsonIgnore]
         public Candidate? Candidate { get; set; }
-        public bool IsDeleted { get; set; }
-        public bool IsActive { get; set; }
-        public string CreatedBy { get; set; }
-
         public DateTime CreatedDate { get; set; }
-
-        public string UpdatedBy { get; set; }
-
-        public DateTime UpdatedDate { get; set; }
-
 
     }
 }

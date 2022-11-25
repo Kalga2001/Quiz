@@ -13,18 +13,11 @@ namespace StefaniniQuiz.Domain.Entity
         public int TotalPoints => Answers.Any() ? Answers.Select(x => x.Point).Sum() : 0;
 
         public string QuestionText { get; set; }
-        public ICollection<Answers> Answers { get; set; }
+        public ICollection<Answers> Answers { get; set; } = new List<Answers>();
         public Guid QuizId { get; set; }
         public Quiz Quiz { get; set; }
-        public bool IsDeleted { get; set; }
-        public bool IsActive { get; set; }
-        public string CreatedBy { get; set; }
-
+       
         public DateTime CreatedDate { get; set; }
-
-        public string UpdatedBy { get; set; }
-
-        public DateTime UpdatedDate { get; set; }
 
 
 

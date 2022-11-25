@@ -41,18 +41,18 @@ namespace StefaniniQuiz.BLL.Services.QuizServices
                 //Id = data.Id ?? Guid.NewGuid(),
                 Title = data.Title,
                 TechnologyName = data.TechnologyName,
-                CreatedDate = DateTime.Now,
-
+                CreatedDate=DateTime.Now,
                 Questions = data.Questions.Select(x => new Questions
                 {
                     //Id = Guid.NewGuid(),
                     QuestionText=x.QuestionText,
+                    CreatedDate=DateTime.Now,
                     Answers = x.Answers.Select(y => new Answers
                     {
                         IsCorrect = y.IsCorrect,
                         Point = y.Point,
-                        AnswerText = y.AnswerText
-
+                        AnswerText = y.AnswerText,
+                        CreatedDate = DateTime.Now,
 
                     }).ToList()
                 }).ToList()
@@ -64,17 +64,12 @@ namespace StefaniniQuiz.BLL.Services.QuizServices
 
         public async Task EditQuiz(Quiz editedQuiz)
         {
-
             var existingQuiz = await GetQuiz(editedQuiz.Id);
-
             if (existingQuiz is null)
             {
                 throw new Exception("Quiz not found.");
             }
-
-
             existingQuiz = await _quizRepository.SetValues(existingQuiz, editedQuiz);
-
             //Delete
             foreach (var existingQuestion in existingQuiz.Questions.ToList())
             {
@@ -84,7 +79,6 @@ namespace StefaniniQuiz.BLL.Services.QuizServices
                     {
                         await _answerRepository.DeleteAsync(existingAnswer);
                     }
-
                     await _questionRepository.DeleteAsync(existingQuestion);
                 }
                 else
@@ -93,7 +87,6 @@ namespace StefaniniQuiz.BLL.Services.QuizServices
                     {
                         var editedQuestion = editedQuiz.Questions.Where(q => q.Id == existingQuestion.Id).FirstOrDefault();
                         if (editedQuestion is null) continue;
-
                         if (!editedQuestion.Answers.Any(c => c.Id == existingAnswer.Id))
                         {
                             await _answerRepository.DeleteAsync(existingAnswer);
@@ -101,17 +94,12 @@ namespace StefaniniQuiz.BLL.Services.QuizServices
                     }
                 }
             }
-
-
             //Update and insert childrens
-
             foreach (var questionEdited in editedQuiz.Questions)
             {
                 var existingQuestion = existingQuiz.Questions
                     .Where(q => q.Id == questionEdited.Id)
                     .FirstOrDefault();
-
-
                 if (existingQuestion is null)
                 {
                     existingQuestion = new Questions
@@ -120,22 +108,18 @@ namespace StefaniniQuiz.BLL.Services.QuizServices
                         Answers = questionEdited.Answers,
                         QuizId = questionEdited.QuizId,
                         QuestionText = questionEdited.QuestionText
-
                     };
-
                     existingQuiz.Questions.Add(existingQuestion);
                 }
                 else
                 {
                     existingQuestion = await _questionRepository.SetValues(existingQuestion, questionEdited);
                 }
-
                 foreach (var answerEdited in questionEdited.Answers)
                 {
                     var existingAnswer = existingQuestion.Answers
                         .Where(a => a.Id == answerEdited.Id)
                         .FirstOrDefault();
-
                     if (existingAnswer != null)
                     {
                         existingAnswer = await _answerRepository.SetValues(existingAnswer, answerEdited);
@@ -153,20 +137,13 @@ namespace StefaniniQuiz.BLL.Services.QuizServices
                         };
                         existingQuestion.Answers.Add(newAnswer);
                     }
-
                 }
                 await _questionRepository.Update(existingQuestion);
-
-
-
             }
             await _quizRepository.Update(existingQuiz);
-
-
-
         }
 
-        public async Task<Quiz> GetQuiz(Guid id)
+            public async Task<Quiz> GetQuiz(Guid id)
         {
 
             var quiz = await _quizRepository.GetByIdAsync(id, include: source => source.Include(q => q.Questions).ThenInclude(q => q.Answers));

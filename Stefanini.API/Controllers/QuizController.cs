@@ -15,62 +15,26 @@ namespace LikeQuiz.API.Controllers
     [ApiController]
     public class QuizController : ControllerBase
     {
-        [Route("api/[controller]")]
-        [ApiController]
-        public class QuizzesController : ControllerBase
+
+        private readonly IQuizService _quizServices;
+
+        public QuizController(IQuizService quizServices)
         {
-            private readonly IQuizService _quizServices;
+            _quizServices = quizServices;
 
-            public QuizzesController(IQuizService quizServices)
-            {
-                _quizServices = quizServices;
+        }
 
-            }
+        [HttpGet]
+        public async Task<ActionResult<GetQuizDto>> GetQuizzes()
+        {
 
-            [HttpGet]
-            public async Task<ActionResult<GetQuizDto>> GetQuizzes()
-            {
-
-                var quizzes = (await _quizServices.GetQuizzes())
-                    .Select(quiz => new GetQuizDto
-                    {
-                        Id = quiz.Id,
-                        Title = quiz.Title,
-                        TechnologyName = quiz.TechnologyName,
-                        CreatedDate = quiz.CreatedDate,
-                        Questions = quiz.Questions.Select(x => new GetQuestionDto
-                        {
-                            Id = x.Id,
-                            QuestionText = x.QuestionText,
-                            TotalPoints = x.TotalPoints,
-                            Answers = x.Answers.Select(y => new GetAnswerDto
-                            {
-                                Id = y.Id,
-                                AnswerText = y.AnswerText,
-                                IsCorrect = y.IsCorrect,
-                                Point = y.Point
-                            })
-                        })
-                    });
-
-                return Ok(quizzes);
-            }
-
-            //Paginare , o lista de 20 obiecte se transmite 
-            // POst QuizDTO - Id la obiect ca return, status message OK , iD la obiect
-            //Delete(guid id)
-
-
-            [HttpGet("{id}")]
-            public async Task<ActionResult<GetQuizDto>> GetQuiz(Guid id)
-            {
-                Quiz quiz = await _quizServices.GetQuiz(id);
-                var getQuizDTO = new GetQuizDto()
+            var quizzes = (await _quizServices.GetQuizzes())
+                .Select(quiz => new GetQuizDto
                 {
                     Id = quiz.Id,
                     Title = quiz.Title,
                     TechnologyName = quiz.TechnologyName,
-                    CreatedDate=quiz.CreatedDate,
+                    CreatedDate = quiz.CreatedDate,
                     Questions = quiz.Questions.Select(x => new GetQuestionDto
                     {
                         Id = x.Id,
@@ -84,71 +48,105 @@ namespace LikeQuiz.API.Controllers
                             Point = y.Point
                         })
                     })
-                };
-                return Ok(getQuizDTO);
-            }
+                });
 
-
-            [HttpPost]
-            public async Task<ActionResult> AddQuiz(CreateQuizDto data)
-            {
-                var createdQuiz = await _quizServices.CreateQuiz(data);
-
-                var getQuizDTO = new GetQuizDto()
-                {
-                    Id = createdQuiz.Id,
-                    Title = createdQuiz.Title,
-                    TechnologyName = createdQuiz.TechnologyName,
-                    CreatedDate = createdQuiz.CreatedDate,
-                    Questions = createdQuiz.Questions.Select(x => new GetQuestionDto
-                    {
-                        Id = x.Id,
-                        QuestionText= x.QuestionText,
-                        TotalPoints = x.TotalPoints,
-                        Answers = x.Answers.Select(y => new GetAnswerDto
-                        {
-                            Id = y.Id,
-                            AnswerText = y.AnswerText,
-                            IsCorrect = y.IsCorrect,
-                            Point = y.Point
-                        })
-                    })
-                };
-
-                return CreatedAtAction(nameof(GetQuiz), new { id = createdQuiz.Id }, getQuizDTO);
-            }
-
-            [HttpPut]
-            public async Task<ActionResult> EditQuiz(EditQuizDto editQuizDTO)
-            {
-                var editQuiz = new Quiz
-                {
-                    Id = editQuizDTO.Id,
-                    Title = editQuizDTO.Title,
-                    TechnologyName = editQuizDTO.TechnologyName,
-                    CreatedDate=editQuizDTO.CreateDate,
-                    Questions = editQuizDTO.Questions.Select(x => new Questions
-                    {
-                        Id = x.Id,
-                        QuestionText=x.QuestionText,
-                        QuizId = editQuizDTO.Id,
-                        Answers = x.Answers.Select(y => new Answers
-                        {
-                            Id = y.Id,
-                            QuestionId = x.Id,
-                            AnswerText = y.AnswerText,
-                            IsCorrect = y.IsCorrect,
-                            Point = y.Point
-                        }).ToList()
-                    }).ToList()
-                };
-
-
-                await _quizServices.EditQuiz(editQuiz);
-
-                return Ok();
-
-            }
+            return Ok(quizzes);
         }
+
+
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<GetQuizDto>> GetQuiz(Guid id)
+        {
+            Quiz quiz = await _quizServices.GetQuiz(id);
+            var getQuizDTO = new GetQuizDto()
+            {
+                Id = quiz.Id,
+                Title = quiz.Title,
+                TechnologyName = quiz.TechnologyName,
+                CreatedDate = quiz.CreatedDate,
+                Questions = quiz.Questions.Select(x => new GetQuestionDto
+                {
+                    Id = x.Id,
+                    QuestionText = x.QuestionText,
+                    TotalPoints = x.TotalPoints,
+                    CreatedDate=x.CreatedDate,
+                    Answers = x.Answers.Select(y => new GetAnswerDto
+                    {
+                        Id = y.Id,
+                        AnswerText = y.AnswerText,
+                        IsCorrect=y.IsCorrect,
+                        CreatedDate=y.CreatedDate                        
+                    })
+                })
+            };
+            return Ok(getQuizDTO);
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> AddQuiz(CreateQuizDto data)
+        {
+            var createdQuiz = await _quizServices.CreateQuiz(data);
+
+            var getQuizDTO = new GetQuizDto()
+            {
+                Id = createdQuiz.Id,
+                Title = createdQuiz.Title,
+                TechnologyName = createdQuiz.TechnologyName,
+                CreatedDate = createdQuiz.CreatedDate,
+    
+                Questions = createdQuiz.Questions.Select(x => new GetQuestionDto
+                {
+                    Id = x.Id,
+                    QuestionText = x.QuestionText,
+                    TotalPoints = x.TotalPoints,
+                    CreatedDate = x.CreatedDate,
+                    Answers = x.Answers.Select(y => new GetAnswerDto
+                    {
+                        Id = y.Id,
+                        AnswerText = y.AnswerText,
+                        IsCorrect = y.IsCorrect,
+                        Point = y.Point,
+                        CreatedDate = y.CreatedDate,
+                    })
+                })
+            };
+
+            return CreatedAtAction(nameof(GetQuiz), new { id = createdQuiz.Id }, getQuizDTO);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> EditQuiz(EditQuizDto editQuizDTO)
+        {
+            var editQuiz = new Quiz
+            {
+                Id = editQuizDTO.Id,
+                Title = editQuizDTO.Title,
+                TechnologyName = editQuizDTO.TechnologyName,
+                CreatedDate = editQuizDTO.CreateDate,
+                Questions = editQuizDTO.Questions.Select(x => new Questions
+                {
+                    Id = x.Id,
+                    QuestionText = x.QuestionText,
+                    QuizId = editQuizDTO.Id,
+                    Answers = x.Answers.Select(y => new Answers
+                    {
+                        Id = y.Id,
+                        QuestionId = x.Id,
+                        AnswerText = y.AnswerText,
+                        IsCorrect = y.IsCorrect,
+                        Point = y.Point
+                    }).ToList()
+                }).ToList()
+            };
+
+
+            await _quizServices.EditQuiz(editQuiz);
+
+            return Ok();
+
+        }
+
     }
 }
