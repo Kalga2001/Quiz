@@ -1,0 +1,12 @@
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\StefaniniQuiz.Domain\bin\Debug\net6.0\StefaniniQuiz.Domain.deps.json
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\StefaniniQuiz.Domain\bin\Debug\net6.0\StefaniniQuiz.Domain.dll
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\StefaniniQuiz.Domain\bin\Debug\net6.0\StefaniniQuiz.Domain.pdb
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\StefaniniQuiz.Domain\obj\Debug\net6.0\StefaniniQuiz.Domain.csproj.AssemblyReference.cache
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\StefaniniQuiz.Domain\obj\Debug\net6.0\StefaniniQuiz.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\StefaniniQuiz.Domain\obj\Debug\net6.0\StefaniniQuiz.Domain.AssemblyInfoInputs.cache
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\StefaniniQuiz.Domain\obj\Debug\net6.0\StefaniniQuiz.Domain.AssemblyInfo.cs
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\StefaniniQuiz.Domain\obj\Debug\net6.0\StefaniniQuiz.Domain.csproj.CoreCompileInputs.cache
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\StefaniniQuiz.Domain\obj\Debug\net6.0\StefaniniQuiz.Domain.dll
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\StefaniniQuiz.Domain\obj\Debug\net6.0\refint\StefaniniQuiz.Domain.dll
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\StefaniniQuiz.Domain\obj\Debug\net6.0\StefaniniQuiz.Domain.pdb
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\StefaniniQuiz.Domain\obj\Debug\net6.0\ref\StefaniniQuiz.Domain.dll

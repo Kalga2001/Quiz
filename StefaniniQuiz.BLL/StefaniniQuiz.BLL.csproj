@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Stefanini.DAL\StefaniniQuiz.DAL.csproj" />
+    <ProjectReference Include="..\StefaniniQuiz.Common\StefaniniQuiz.Common.csproj" />
+    <ProjectReference Include="..\StefaniniQuiz.Domain\StefaniniQuiz.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

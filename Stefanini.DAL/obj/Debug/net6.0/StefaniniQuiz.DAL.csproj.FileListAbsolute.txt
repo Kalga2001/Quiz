@@ -1,0 +1,17 @@
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\obj\Debug\net6.0\StefaniniQuiz.DAL.csproj.AssemblyReference.cache
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\obj\Debug\net6.0\StefaniniQuiz.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\obj\Debug\net6.0\StefaniniQuiz.DAL.AssemblyInfoInputs.cache
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\obj\Debug\net6.0\StefaniniQuiz.DAL.AssemblyInfo.cs
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\obj\Debug\net6.0\StefaniniQuiz.DAL.csproj.CoreCompileInputs.cache
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\bin\Debug\net6.0\StefaniniQuiz.DAL.deps.json
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\bin\Debug\net6.0\StefaniniQuiz.DAL.runtimeconfig.json
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\bin\Debug\net6.0\StefaniniQuiz.DAL.dll
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\bin\Debug\net6.0\StefaniniQuiz.DAL.pdb
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\bin\Debug\net6.0\StefaniniQuiz.Domain.dll
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\bin\Debug\net6.0\StefaniniQuiz.Domain.pdb
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\obj\Debug\net6.0\StefaniniQuiz.DAL.csproj.CopyComplete
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\obj\Debug\net6.0\StefaniniQuiz.DAL.dll
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\obj\Debug\net6.0\refint\StefaniniQuiz.DAL.dll
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\obj\Debug\net6.0\StefaniniQuiz.DAL.pdb
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\obj\Debug\net6.0\StefaniniQuiz.DAL.genruntimeconfig.cache
+C:\Users\MBALTA\Desktop\FormRegistration\StefaniniProject\Stefanini.DAL\obj\Debug\net6.0\ref\StefaniniQuiz.DAL.dll
