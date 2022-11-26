@@ -43,6 +43,15 @@ namespace LikeQuiz.API.Controllers
             return result;
         }
 
+        [HttpDelete("DeleteCandidate")]
+        public async Task<Candidate> DeleteCandidate(Guid id)
+        {
+            var candidate = await _service.GetByIdCandidate(id);
+            await _service.DeleteCandidate(id);
+            
+            return candidate;
+        }
+
 
     }
 }

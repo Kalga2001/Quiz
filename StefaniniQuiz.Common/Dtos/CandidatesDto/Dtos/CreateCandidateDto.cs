@@ -15,5 +15,7 @@ namespace StefaniniQuiz.Common.Dtos.CandidatesDto.Dtos
 
         public DateTime? CreatedDate { get; set; }
         public string? CreatedBy { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

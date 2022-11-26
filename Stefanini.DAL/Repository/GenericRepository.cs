@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using StefaniniQuiz.DAL.Interfaces;
+using StefaniniQuiz.Domain.Entity;
 using StefaniniQuiz.Domain.EntityInterface;
 using System;
 using System.Collections.Generic;
@@ -120,6 +121,8 @@ namespace StefaniniQuiz.DAL.Repository
                 throw new Exception(ex.Message);
             }
         }
+
+
     }
 
 }

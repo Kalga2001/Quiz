@@ -15,5 +15,6 @@ namespace StefaniniQuiz.BLL.Services.CandidateServices
         Task<Candidate> CreateCandidate(CreateCandidateDto createCandidateDto);
         Task<Candidate> UpdateCandidate(Guid id,UpdateCandidateDto updateCandidateDto);
 
+        Task<Candidate> DeleteCandidate(Guid id);
     }
 }

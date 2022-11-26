@@ -2,9 +2,12 @@
 using StefaniniQuiz.Common.Dtos.CandidatesDto.Dtos;
 using StefaniniQuiz.DAL.Interfaces;
 using StefaniniQuiz.Domain.Entity;
+using StefaniniQuiz.Domain.EntityInterface;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,21 +25,39 @@ namespace StefaniniQuiz.BLL.Services.CandidateServices
         public async Task<ICollection<Candidate>> GetAllCandidates()
         {
             var candidates = await _repository.GetAllAsync();
-            return candidates;
+            var all = candidates.Where(x => x.IsActive == true && x.IsDeleted == false).ToList();
+            return all;
         }
 
         public async Task<Candidate> GetByIdCandidate(Guid id)
         {
             var candidate = await _repository.GetByIdAsync(id);
-
-            return candidate;
+            if (candidate.IsDeleted == true && candidate.IsActive == false)
+            {
+                throw new Exception("Candidate is deleted");
+                return null;
+            }
+            else
+            {
+                return candidate;
+            }
         }
     
 
         public async Task<Candidate> UpdateCandidate(Guid id,UpdateCandidateDto updateCandidate)
         {
             var candidate= await GetByIdCandidate(id);
-            
+           
+            if (candidate.IsDeleted == true && candidate.IsActive == false)
+            {
+                throw new Exception("Candidate is deleted");
+                return null;
+            }
+            else
+            {
+                return candidate;
+            }
+
             candidate.Email=updateCandidate.Email;
             candidate.FirstName=updateCandidate.FirstName;
             candidate.LastName=updateCandidate.LastName;
@@ -57,11 +78,35 @@ namespace StefaniniQuiz.BLL.Services.CandidateServices
             candidate.Email = createCandidateDto.Email;
             candidate.CreatedBy = Environment.UserName;
             candidate.CreatedDate= DateTime.Now;
-
-            _repository.AddAsync(candidate);
+            candidate.IsActive = true;
+            candidate.IsDeleted = false;
+            await _repository.AddAsync(candidate);
 
             return candidate;
             
+        }
+
+        public async Task<Candidate> DeleteCandidate(Guid id)
+        {
+            var candidate = await _repository.GetByIdAsync(id); 
+            if (candidate == null)
+            {
+                throw new ValidationException($"Object  with id {id} not found");
+            }
+
+            if (candidate.IsDeleted == true && candidate.IsActive == false)
+            {
+                return candidate;
+            }
+
+            else
+            {
+                candidate.IsActive = false;
+                candidate.IsDeleted = true;
+            }
+            _repository.Update(candidate);
+            
+            return candidate;
         }
     }
 }
